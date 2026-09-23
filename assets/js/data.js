@@ -84,7 +84,7 @@ window.WT = (() => {
      Format : id → [rang, BR Arcade, BR Réaliste, BR Simulation, premium]
      Ne pas modifier à la main : relancer le script après une mise à jour du jeu. */
   /* BR:START */
-  const GAME_VERSION = '2.59.0.28';
+  const GAME_VERSION = '2.59.0.29';
   const BR = {
     a6m2:[2, 3.7, 3.7, 3.3, 0],
     il2:[2, 2.7, 2.3, 2.3, 0],

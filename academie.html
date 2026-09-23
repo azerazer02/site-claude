@@ -34,34 +34,66 @@
             <div class="eyebrow" data-reveal>// Module 01 — Balistique terminale</div>
             <h2 class="h2" data-split>Simulateur de blindage</h2>
           </div>
-          <p class="lead" data-reveal data-delay=".2">Inclinez la plaque et observez l'épaisseur effective grimper&nbsp;: <span class="mono accent">e&nbsp;=&nbsp;t&nbsp;/&nbsp;cos(θ)</span>. Faites glisser la plaque directement sur le schéma, puis tirez.</p>
+          <p class="lead" data-reveal data-delay=".2">27 obus réels, avec les caractéristiques tirées des fichiers du jeu, calculés selon le même modèle : traînée, formules de De Marre et de Lanz-Odermatt, tables d’inclinaison et de ricochet.</p>
         </div>
-        <div class="sim hud" data-reveal="scale">
-          <div class="sim-stage">
-            <canvas data-sim width="1280" height="720" aria-label="Schéma d'un obus frappant une plaque de blindage inclinée"></canvas>
-            <span class="hint">GLISSER VERTICALEMENT POUR INCLINER · CLIC POUR TIRER</span>
-          </div>
-          <div class="sim-panel">
-            <div class="ctrl">
-              <span style="display:block;font:500 .68rem var(--f-mono);letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Munition</span>
-              <div class="ammo" role="group" aria-label="Type de munition" data-ammo>
-                <button data-a="ap" aria-pressed="true">APHE</button>
-                <button data-a="apfsds" aria-pressed="false">APFSDS</button>
-                <button data-a="heat" aria-pressed="false">HEAT</button>
+
+        <div class="sim2 hud" data-reveal="scale">
+          <div class="sim2-main">
+            <div class="sim-stage">
+              <canvas data-sim width="1280" height="720" aria-label="Schéma d'un obus frappant une plaque de blindage inclinée, avec le compartiment de combat derrière"></canvas>
+              <span class="hint">GLISSER VERTICALEMENT POUR INCLINER · CLIC POUR TIRER · SCHÉMA NON À L’ÉCHELLE</span>
+            </div>
+            <div class="sim-results">
+              <div class="sim-verdict-col">
+                <div class="verdict" data-verdict>—</div>
+                <p class="mod-hits" data-mod-hits aria-live="polite"></p>
+                <ul class="why" data-why></ul>
+              </div>
+              <div class="readouts" data-readouts></div>
+            </div>
+            <div class="sim-extra">
+              <div class="sx-card">
+                <h4>// Fiche de l’obus</h4>
+                <dl class="shell-card" data-shell-card></dl>
+              </div>
+              <div class="sx-card">
+                <h4>// Pénétration selon la distance</h4>
+                <div class="pen-chart" data-chart></div>
+              </div>
+              <div class="sx-card">
+                <h4>// Série de 1 000 tirs</h4>
+                <div data-stats></div>
+                <button class="btn btn-sm btn-ghost" type="button" data-mc>Lancer 1 000 tirs</button>
               </div>
             </div>
-            <div class="ctrl"><label for="s-t">Épaisseur <b data-o-t>80 mm</b></label><input id="s-t" type="range" min="10" max="250" value="80" data-s-t></div>
-            <div class="ctrl"><label for="s-a">Inclinaison θ <b data-o-a>55°</b></label><input id="s-a" type="range" min="0" max="85" value="55" data-s-a></div>
-            <div class="ctrl"><label for="s-p">Pénétration de l'obus <b data-o-p>150 mm</b></label><input id="s-p" type="range" min="20" max="600" value="150" data-s-p></div>
-            <div class="readout-box">
-              <div><small>Épaisseur effective</small><b data-o-eff>139 mm</b></div>
-              <div><small>Marge</small><b data-o-m>+11 mm</b></div>
-            </div>
-            <div class="verdict" data-verdict>—</div>
-            <button class="btn btn-primary" data-fire style="justify-content:center">Feu ! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+          </div>
+
+          <div class="sim-panel">
+            <div class="ctrl"><label for="s-gun">Canon</label><select id="s-gun" class="sel" data-gun></select></div>
+            <div class="ctrl"><span class="ctrl-l">Obus</span><div class="ammo2" role="group" aria-label="Obus" data-shells></div></div>
+            <div class="ctrl"><span class="ctrl-l">Plaques historiques</span><div class="scen" data-scen></div></div>
+            <div class="ctrl"><label for="s-d">Distance <b data-o-d>500 m</b></label><input id="s-d" type="range" min="10" max="3000" step="10" value="500" data-s-d></div>
+            <div class="ctrl"><label for="s-t">Épaisseur <b data-o-t>80 mm</b></label><input id="s-t" type="range" min="5" max="500" value="80" data-s-t></div>
+            <div class="ctrl"><label for="s-a">Inclinaison (depuis la verticale) <b data-o-a>55°</b></label><input id="s-a" type="range" min="0" max="85" value="55" data-s-a></div>
+            <div class="ctrl"><label for="s-m">Matériau</label><select id="s-m" class="sel" data-mat></select></div>
+            <button class="btn btn-primary" type="button" data-fire style="justify-content:center">Feu ! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
           </div>
         </div>
-        <p class="muted" style="font-size:.82rem;margin-top:14px">Modèle pédagogique simplifié : il ignore notamment la normalisation, l'effet de sur-calibrage et les blindages espacés. Les seuils de ricochet sont approximatifs.</p>
+
+        <details class="sim-notes">
+          <summary>Comment le calcul fonctionne-t-il ?</summary>
+          <ul>
+            <li><b>Données</b> — masse, calibre, vitesse initiale, coefficient de traînée, charge explosive, fusée et paramètres de pénétration de chaque obus proviennent des fichiers du jeu (version <span data-bal-version>—</span>, via le dépôt public War-Thunder-Datamine).</li>
+            <li><b>Vitesse à distance</b> — la traînée aérodynamique ralentit l’obus : v = v₀ · e<sup>−k·d</sup>, avec k = ρ<sub>air</sub> · Cx · S / 2m.</li>
+            <li><b>Obus pleins et sous-calibrés</b> — formule de De Marre avec les coefficients propres à chaque obus. Une charge explosive importante réduit la pénétration (table du moteur du jeu).</li>
+            <li><b>Obus-flèches (APFSDS)</b> — formule de Lanz-Odermatt : longueur utile, diamètre et densité du pénétrateur, acier cible de dureté 260 HB.</li>
+            <li><b>Charges creuses et HESH</b> — pénétration fixe, indépendante de la vitesse et de la distance. La HESH ne perce pas : elle arrache une écaille à l’arrière de la plaque.</li>
+            <li><b>Inclinaison et surcalibrage</b> — l’épaisseur est multipliée selon les tables du jeu, qui dépendent du type d’obus, de l’angle et du rapport entre le calibre et l’épaisseur. Un obus bien plus gros que la plaque en souffre beaucoup moins.</li>
+            <li><b>Ricochet et hasard</b> — probabilité de ricochet tirée des tables du jeu, pénétration dispersée de ±5 % à chaque tir.</li>
+            <li><b>Derrière la plaque</b> — vitesse résiduelle estimée par la relation de Lambert-Jonas, fusée retardée des obus explosifs, gerbe d’éclats. Le schéma n’est pas à l’échelle.</li>
+            <li><b>Limites</b> — pas de blindage composite, espacé ou réactif. Pour les obus APDS, la constante exacte utilisée par le jeu n’est pas publique : leurs valeurs peuvent s’écarter d’environ 10 %.</li>
+          </ul>
+        </details>
       </div>
     </section>
 
@@ -109,6 +141,9 @@
   <script src="assets/js/silhouettes.js" defer></script>
   <script src="assets/js/data.js" defer></script>
   <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/balistique-data.js" defer></script>
+  <script src="assets/js/balistique.js" defer></script>
+  <script src="assets/js/simulateur.js" defer></script>
   <script src="assets/js/academie.js" defer></script>
 </body>
 </html>
