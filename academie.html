@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Académie — Ligne de Front</title>
+  <meta name="description" content="Simulateur de blindage incliné, conseils tactiques et quiz de promotion War Thunder.">
+  <meta name="theme-color" content="#0a0c0b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="academie" id="top">
+  <main>
+    <header class="page-hero" style="--hero-glow: rgba(255,93,93,.18)">
+      <div class="page-hero-sil" data-sil="td"></div>
+      <div class="wrap">
+        <div class="crumbs" data-reveal><a href="index.html">Accueil</a><span>/</span>Académie</div>
+        <div class="eyebrow" data-reveal>// 06 — Instruction</div>
+        <h1 data-split>Académie</h1>
+        <p class="lead" data-reveal data-delay=".3">Comprendre la balistique, lire le terrain, survivre plus longtemps. Testez vos connaissances et décrochez votre grade.</p>
+      </div>
+      <div class="hero-index" aria-hidden="true">06</div>
+    </header>
+
+    <!-- Simulateur -->
+    <section class="section" style="padding-top:60px">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// Module 01 — Balistique terminale</div>
+            <h2 class="h2" data-split>Simulateur de blindage</h2>
+          </div>
+          <p class="lead" data-reveal data-delay=".2">Inclinez la plaque et observez l'épaisseur effective grimper&nbsp;: <span class="mono accent">e&nbsp;=&nbsp;t&nbsp;/&nbsp;cos(θ)</span>. Faites glisser la plaque directement sur le schéma, puis tirez.</p>
+        </div>
+        <div class="sim hud" data-reveal="scale">
+          <div class="sim-stage">
+            <canvas data-sim width="1280" height="720" aria-label="Schéma d'un obus frappant une plaque de blindage inclinée"></canvas>
+            <span class="hint">GLISSER VERTICALEMENT POUR INCLINER · CLIC POUR TIRER</span>
+          </div>
+          <div class="sim-panel">
+            <div class="ctrl">
+              <span style="display:block;font:500 .68rem var(--f-mono);letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:10px">Munition</span>
+              <div class="ammo" role="group" aria-label="Type de munition" data-ammo>
+                <button data-a="ap" aria-pressed="true">APHE</button>
+                <button data-a="apfsds" aria-pressed="false">APFSDS</button>
+                <button data-a="heat" aria-pressed="false">HEAT</button>
+              </div>
+            </div>
+            <div class="ctrl"><label for="s-t">Épaisseur <b data-o-t>80 mm</b></label><input id="s-t" type="range" min="10" max="250" value="80" data-s-t></div>
+            <div class="ctrl"><label for="s-a">Inclinaison θ <b data-o-a>55°</b></label><input id="s-a" type="range" min="0" max="85" value="55" data-s-a></div>
+            <div class="ctrl"><label for="s-p">Pénétration de l'obus <b data-o-p>150 mm</b></label><input id="s-p" type="range" min="20" max="600" value="150" data-s-p></div>
+            <div class="readout-box">
+              <div><small>Épaisseur effective</small><b data-o-eff>139 mm</b></div>
+              <div><small>Marge</small><b data-o-m>+11 mm</b></div>
+            </div>
+            <div class="verdict" data-verdict>—</div>
+            <button class="btn btn-primary" data-fire style="justify-content:center">Feu ! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <p class="muted" style="font-size:.82rem;margin-top:14px">Modèle pédagogique simplifié : il ignore notamment la normalisation, l'effet de sur-calibrage et les blindages espacés. Les seuils de ricochet sont approximatifs.</p>
+      </div>
+    </section>
+
+    <!-- Conseils -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// Module 02 — Doctrine</div>
+            <h2 class="h2" data-split>Conseils de terrain</h2>
+          </div>
+        </div>
+        <div class="tips" data-reveal>
+          <details class="tip" open><summary><span class="n">T-01</span>Présentez l'angle, pas le flanc<span class="pm"></span></summary>
+            <div class="tip-body">Un blindage incliné est plus épais « vu par l'obus ». Orienter légèrement la caisse (environ 30° à 45°) face à la menace peut transformer un blindage moyen en mur. Attention : trop d'angle expose le flanc, bien plus mince.</div></details>
+          <details class="tip"><summary><span class="n">T-02</span>Ne restez jamais immobile à découvert<span class="pm"></span></summary>
+            <div class="tip-body">Tirer, puis se replier derrière un couvert (« tirer et reculer ») est l'une des tactiques les plus efficaces. Un char immobile en plein champ est une cible idéale pour l'artillerie, l'aviation et les chasseurs de chars.</div></details>
+          <details class="tip"><summary><span class="n">T-03</span>Visez les modules, pas le blindage<span class="pm"></span></summary>
+            <div class="tip-body">Soute à munitions, culasse, équipage : un obus qui frappe le bon module neutralise un char en un coup. Étudiez la disposition interne de vos adversaires les plus fréquents.</div></details>
+          <details class="tip"><summary><span class="n">T-04</span>En avion, l'énergie est votre vie<span class="pm"></span></summary>
+            <div class="tip-body">Altitude et vitesse sont une réserve d'énergie. Évitez les virages serrés prolongés contre un appareil plus maniable : piquez, tirez, remontez. Celui qui a l'énergie choisit le combat.</div></details>
+          <details class="tip"><summary><span class="n">T-05</span>Utilisez le terrain et la végétation<span class="pm"></span></summary>
+            <div class="tip-body">Crêtes, bâtiments, buissons : masquez la caisse derrière une butte (« hull-down ») pour n'exposer que la tourelle, souvent la partie la mieux protégée du char.</div></details>
+          <details class="tip"><summary><span class="n">T-06</span>Communiquez et jouez les objectifs<span class="pm"></span></summary>
+            <div class="tip-body">Les points de capture font basculer les batailles. Signalez les ennemis, suivez vos alliés et contestez les zones : une victoire d'équipe rapporte davantage qu'un score individuel.</div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// Module 03 — Évaluation</div>
+            <h2 class="h2" data-split>Examen de promotion</h2>
+          </div>
+          <p class="lead" data-reveal data-delay=".2">Dix questions pour décrocher votre grade. Utilisez la souris ou les touches 1 à 4.</p>
+        </div>
+        <div class="quiz hud" data-quiz data-reveal="scale"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/academie.js" defer></script>
+</body>
+</html>

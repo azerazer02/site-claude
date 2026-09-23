@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hangar — Ligne de Front</title>
+  <meta name="description" content="Le hangar interactif : filtrez, inspectez et comparez les véhicules emblématiques de War Thunder.">
+  <meta name="theme-color" content="#0a0c0b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="hangar" id="top">
+  <main>
+    <header class="page-hero">
+      <div class="page-hero-sil" data-sil="heavy"></div>
+      <div class="wrap">
+        <div class="crumbs" data-reveal><a href="index.html">Accueil</a><span>/</span>Hangar</div>
+        <div class="eyebrow" data-reveal>// 02 — Inventaire des forces</div>
+        <h1 data-split>Le hangar</h1>
+        <p class="lead" data-reveal data-delay=".3">Une sélection de véhicules emblématiques, des chasseurs à hélice aux chars de combat modernes. Cliquez sur une fiche pour l'inspecter, ou sélectionnez-en deux pour les comparer.</p>
+      </div>
+      <div class="hero-index" aria-hidden="true">02</div>
+    </header>
+
+    <section class="section" style="padding-top:40px">
+      <div class="wrap">
+        <div class="toolbar" role="search">
+          <div class="seg" data-filter-type role="group" aria-label="Type de véhicule"></div>
+          <label class="field">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
+            <span class="sr-only">Nation</span>
+            <select data-filter-nation></select>
+          </label>
+          <label class="field">
+            <span class="sr-only">Trier par</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v16M3 16l4 4 4-4M17 20V4M13 8l4-4 4 4"/></svg>
+            <select data-sort>
+              <option value="br-desc">BR décroissante</option>
+              <option value="br-asc">BR croissante</option>
+              <option value="year-asc">Plus anciens</option>
+              <option value="year-desc">Plus récents</option>
+              <option value="name">Nom (A → Z)</option>
+            </select>
+          </label>
+          <label class="field grow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+            <span class="sr-only">Rechercher</span>
+            <input type="search" placeholder="Rechercher : Tiger, Mustang, destroyer…" data-search>
+          </label>
+          <span class="result-count" aria-live="polite"><b data-count-out>0</b> VÉHICULES</span>
+        </div>
+
+        <div class="v-grid" data-grid></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Barre de comparaison -->
+  <div class="compare-tray" data-tray aria-live="polite">
+    <span class="lbl">// COMPARATEUR</span>
+    <div class="slots" data-slots></div>
+    <button class="btn btn-sm btn-primary" data-compare-go disabled>Comparer</button>
+    <button class="icon-btn" data-compare-clear aria-label="Vider le comparateur" style="width:38px;height:38px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+
+  <!-- Fenêtre modale -->
+  <div class="modal" data-modal role="dialog" aria-modal="true" aria-label="Fiche véhicule">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel hud" tabindex="-1">
+      <button class="icon-btn modal-close" data-close aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div data-modal-body></div>
+    </div>
+  </div>
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/hangar.js" defer></script>
+</body>
+</html>

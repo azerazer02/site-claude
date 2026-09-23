@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Modes de jeu — Ligne de Front</title>
+  <meta name="description" content="Arcade, Réaliste, Simulation : les modes de jeu de War Thunder expliqués, avec une carte tactique animée.">
+  <meta name="theme-color" content="#0a0c0b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="modes" id="top">
+  <main>
+    <header class="page-hero" style="--hero-glow: rgba(126,214,126,.14)">
+      <div class="page-hero-sil" data-sil="heli"></div>
+      <div class="wrap">
+        <div class="crumbs" data-reveal><a href="index.html">Accueil</a><span>/</span>Modes de jeu</div>
+        <div class="eyebrow" data-reveal>// 04 — Règles d'engagement</div>
+        <h1 data-split>Modes de jeu</h1>
+        <p class="lead" data-reveal data-delay=".3">Du combat nerveux et accessible à la simulation exigeante, War Thunder propose trois niveaux de réalisme et de nombreux types de batailles.</p>
+      </div>
+      <div class="hero-index" aria-hidden="true">04</div>
+    </header>
+
+    <!-- Niveaux de réalisme -->
+    <section class="section" style="padding-top:60px">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// Niveaux de réalisme</div>
+            <h2 class="h2" data-split>Choisir sa difficulté</h2>
+          </div>
+        </div>
+        <div data-reveal>
+          <div class="mode-tabs" role="tablist" aria-label="Niveaux de réalisme" data-mode-tabs></div>
+          <div class="mode-panel" role="tabpanel" data-mode-panel></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carte tactique -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// Simulation en direct</div>
+            <h2 class="h2" data-split>Le point de capture</h2>
+          </div>
+          <p class="lead" data-reveal data-delay=".2">Une bataille simulée en temps réel : les unités se disputent les zones, les tickets s'épuisent. Changez de type de bataille pour voir la carte se réorganiser.</p>
+        </div>
+        <div class="tactical hud" data-reveal="scale">
+          <div class="tac-map" data-map></div>
+          <div class="tac-side">
+            <div class="tac-controls" role="group" aria-label="Type de bataille" data-tac-modes>
+              <button class="btn btn-sm btn-primary" data-m="dom">Domination</button>
+              <button class="btn btn-sm btn-ghost" data-m="conq">Conquête</button>
+              <button class="btn btn-sm btn-ghost" data-m="bat">Bataille</button>
+            </div>
+            <div class="tickets">
+              <div class="ticket blue"><small>Équipe bleue</small><b data-t-blue>100</b><span class="bar"><i style="--v:1" data-tb-blue></i></span></div>
+              <div class="ticket red"><small>Équipe rouge</small><b data-t-red>100</b><span class="bar"><i style="--v:1" data-tb-red></i></span></div>
+            </div>
+            <div class="cap-list" data-caps></div>
+            <div class="tac-log" data-log aria-live="off"></div>
+            <div class="tac-controls">
+              <button class="btn btn-sm btn-ghost" data-pause>Pause</button>
+              <button class="btn btn-sm btn-ghost" data-restart>Relancer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Types de batailles -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// Types de missions</div>
+            <h2 class="h2" data-split>Objectifs de bataille</h2>
+          </div>
+        </div>
+        <div class="battle-types">
+          <article class="btype" data-reveal><span class="k">SOL</span>
+            <svg class="ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="27" r="7"/><circle cx="27" cy="27" r="7"/><circle cx="42" cy="27" r="7"/><text x="12" y="31" font-size="9" fill="currentColor" stroke="none" text-anchor="middle" font-family="monospace">A</text><text x="27" y="31" font-size="9" fill="currentColor" stroke="none" text-anchor="middle" font-family="monospace">B</text><text x="42" y="31" font-size="9" fill="currentColor" stroke="none" text-anchor="middle" font-family="monospace">C</text></svg>
+            <h3>Domination</h3><p>Trois points à capturer. L'équipe qui en contrôle le plus fait fondre les tickets adverses.</p></article>
+          <article class="btype" data-reveal data-delay=".06"><span class="k">SOL</span>
+            <svg class="ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="2"><circle cx="27" cy="27" r="12"/><circle cx="27" cy="27" r="4" fill="currentColor"/><path d="M4 27h8M42 27h8"/></svg>
+            <h3>Conquête</h3><p>Un point unique au centre de la carte : un affrontement frontal et sans répit.</p></article>
+          <article class="btype" data-reveal data-delay=".12"><span class="k">SOL</span>
+            <svg class="ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="27" r="7"/><circle cx="42" cy="27" r="7"/><path d="M20 22l14 0M30 18l4 4-4 4M34 32H20M24 28l-4 4 4 4"/></svg>
+            <h3>Bataille</h3><p>Chaque camp défend son point et doit s'emparer de celui de l'adversaire.</p></article>
+          <article class="btype" data-reveal><span class="k">AIR</span>
+            <svg class="ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="2"><path d="M27 6v42M10 22l17 6 17-6M18 42l9-4 9 4"/></svg>
+            <h3>Domination aérienne</h3><p>Des aérodromes à capturer en posant l'avion sur la piste, sous le feu des chasseurs.</p></article>
+          <article class="btype" data-reveal data-delay=".06"><span class="k">AIR</span>
+            <svg class="ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 44h38M14 44V32h8v12M28 44V26h10v18"/><path d="M40 8l-8 14M36 8l-6 10" stroke-dasharray="3 3"/></svg>
+            <h3>Frappe au sol</h3><p>Bases, convois et défenses côtières : bombardiers et avions d'attaque en première ligne.</p></article>
+          <article class="btype" data-reveal data-delay=".12"><span class="k">MER</span>
+            <svg class="ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 34l6-10h30l6 10z"/><path d="M20 24v-8h10v8M4 42c6 3 10-3 16 0s10 3 16 0 10-3 16 0"/></svg>
+            <h3>Bataille navale</h3><p>Vedettes et destroyers se disputent les zones côtières, torpilles et artillerie à l'appui.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progression -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// Progression</div>
+            <h2 class="h2" data-split>Huit rangs</h2>
+          </div>
+          <p class="lead" data-reveal data-delay=".2">Recherchez les véhicules l'un après l'autre et gravissez l'arbre technologique de votre nation, des années 1930 au XXIᵉ siècle.</p>
+        </div>
+        <div class="ranks">
+          <div class="fill"></div>
+          <div class="rank" style="--i:0"><div class="dot"><span>I</span></div><b>RANG I</b><small>Entre-deux-guerres</small></div>
+          <div class="rank" style="--i:1"><div class="dot"><span>II</span></div><b>RANG II</b><small>1939 – 1941</small></div>
+          <div class="rank" style="--i:2"><div class="dot"><span>III</span></div><b>RANG III</b><small>1942 – 1944</small></div>
+          <div class="rank" style="--i:3"><div class="dot"><span>IV</span></div><b>RANG IV</b><small>Fin de guerre</small></div>
+          <div class="rank" style="--i:4"><div class="dot"><span>V</span></div><b>RANG V</b><small>Premiers jets</small></div>
+          <div class="rank" style="--i:5"><div class="dot"><span>VI</span></div><b>RANG VI</b><small>Guerre froide</small></div>
+          <div class="rank" style="--i:6"><div class="dot"><span>VII</span></div><b>RANG VII</b><small>Années 70 – 80</small></div>
+          <div class="rank" style="--i:7"><div class="dot"><span>VIII</span></div><b>RANG VIII</b><small>Ère moderne</small></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/modes.js" defer></script>
+</body>
+</html>

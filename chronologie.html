@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chronologie — Ligne de Front</title>
+  <meta name="description" content="Un siècle d'évolution des blindés, de l'aviation et de la marine, de 1930 à nos jours.">
+  <meta name="theme-color" content="#0a0c0b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="chronologie" id="top">
+  <main>
+    <header class="page-hero" style="--hero-glow: rgba(255,179,71,.2)">
+      <div class="page-hero-sil" data-sil="bomber"></div>
+      <div class="wrap">
+        <div class="crumbs" data-reveal><a href="index.html">Accueil</a><span>/</span>Chronologie</div>
+        <div class="eyebrow" data-reveal>// 05 — Archives</div>
+        <h1 data-split>Un siècle de fer</h1>
+        <p class="lead" data-reveal data-delay=".3">Des biplans entoilés aux chasseurs à commandes électriques, des chars de 10 tonnes aux forteresses de 60 tonnes : faites défiler l'histoire.</p>
+      </div>
+      <div class="hero-index" aria-hidden="true">05</div>
+    </header>
+
+    <section class="chrono" data-chrono>
+      <div class="chrono-year" aria-hidden="true"><span data-year>1930</span></div>
+      <div class="wrap" style="position:relative">
+        <div class="chrono-line" aria-hidden="true"><i data-line></i></div>
+        <div data-eras></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/chrono.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nations — Ligne de Front</title>
+  <meta name="description" content="Les dix nations de War Thunder : doctrines, points forts et véhicules emblématiques.">
+  <meta name="theme-color" content="#0a0c0b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="nations" id="top">
+  <main>
+    <header class="page-hero" style="--hero-glow: rgba(127,166,201,.22)">
+      <div class="page-hero-sil" data-sil="fighter"></div>
+      <div class="wrap">
+        <div class="crumbs" data-reveal><a href="index.html">Accueil</a><span>/</span>Nations</div>
+        <div class="eyebrow" data-reveal>// 03 — Ordre de bataille</div>
+        <h1 data-split>Dix nations</h1>
+        <p class="lead" data-reveal data-delay=".3">Chaque arbre technologique reflète une doctrine militaire réelle. Sélectionnez un drapeau pour découvrir ses forces, son style de jeu et ses machines légendaires.</p>
+      </div>
+      <div class="hero-index" aria-hidden="true">03</div>
+    </header>
+
+    <section class="section" style="padding-top:50px" id="panel">
+      <div class="wrap">
+        <div class="nation-picker" role="tablist" aria-label="Choisir une nation" data-picker data-reveal></div>
+
+        <article class="nation-panel hud" data-panel role="tabpanel" data-reveal="scale">
+          <div class="nation-flag-stage">
+            <canvas class="wave-flag" data-flag width="880" height="600" aria-hidden="true"></canvas>
+            <div class="nation-code" data-code aria-hidden="true"></div>
+          </div>
+          <div class="nation-info" data-info aria-live="polite"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// Analyse comparative</div>
+            <h2 class="h2" data-split>Matrice des forces</h2>
+          </div>
+          <p class="lead" data-reveal data-delay=".2">Appréciation éditoriale de la profondeur et de la compétitivité de chaque arbre, par domaine. Cliquez sur une ligne pour afficher la nation.</p>
+        </div>
+        <div class="matrix-wrap" data-reveal>
+          <table class="matrix" data-matrix>
+            <thead><tr><th style="text-align:left">Nation</th><th>Aviation</th><th>Blindés</th><th>Marine</th><th>Hélicoptères</th><th>Moyenne</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/nations.js" defer></script>
+</body>
+</html>

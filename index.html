@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ligne de Front — Le codex War Thunder</title>
+  <meta name="description" content="Fan-site War Thunder : hangar interactif, nations, modes de jeu, chronologie et académie tactique.">
+  <meta name="theme-color" content="#0a0c0b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    document.documentElement.classList.add('js');
+    try { if (!sessionStorage.getItem('ldf-boot')) document.documentElement.classList.add('boot'); } catch (e) {}
+  </script>
+</head>
+<body data-page="accueil" id="top">
+
+  <!-- Séquence de démarrage (1re visite de la session) -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <svg class="loader-logo" viewBox="0 0 40 40" fill="none" stroke="currentColor"><path d="M20 6 L32 13 V27 L20 34 L8 27 V13 Z" stroke-width="1.6"/><path d="M13 22 L20 17 L27 22 M13 27 L20 22 L27 27" stroke-width="2.2" stroke-linejoin="round"/></svg>
+      <div class="loader-lines"></div>
+      <div class="loader-bar"><i></i></div>
+      <div class="loader-pct">0%</div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ============ HÉROS ============ -->
+    <section class="hero" aria-label="Introduction">
+      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-vignette"></div>
+      <div class="hero-scan"></div>
+
+      <div class="hero-hud" aria-hidden="true">
+        <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
+        <div class="compass"><div class="compass-tape"></div></div>
+        <div class="readout">
+          CAP <b data-hdg>120°</b><br>
+          ALT <b data-alt>3 200 m</b><br>
+          VIT <b data-spd>540 km/h</b>
+        </div>
+        <div class="readout-l">SECTEUR 07 · GRILLE D-4<br>CIBLES HOSTILES DÉTECTÉES</div>
+      </div>
+
+      <div class="wrap hero-content">
+        <div class="eyebrow" data-reveal>Codex de fan · Air · Terre · Mer</div>
+        <h1 class="display hero-title">
+          <span class="line" data-split>La guerre</span>
+          <span class="line accent-line" data-split data-delay=".25">totale.</span>
+        </h1>
+        <p class="lead hero-sub" data-reveal data-delay=".6">
+          Plus de 2&nbsp;500 véhicules, dix nations, un siècle d'histoire militaire.
+          Plongez dans l'univers de War Thunder&nbsp;: explorez le hangar, choisissez votre camp et maîtrisez l'art du combat interarmes.
+        </p>
+        <div class="hero-ctas" data-reveal data-delay=".8">
+          <a class="btn btn-primary" href="hangar.html" data-cursor="HANGAR">Entrer dans le hangar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="nations.html">Choisir sa nation</a>
+        </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true"><span>DÉFILER</span><i></i></div>
+    </section>
+
+    <!-- ============ BANDEAU ============ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Batailles interarmes <em>✦</em></span><span>Aviation <em>✦</em></span><span>Blindés <em>✦</em></span><span>Marine <em>✦</em></span><span>Hélicoptères <em>✦</em></span><span>1930 — Aujourd'hui <em>✦</em></span>
+        <span>Batailles interarmes <em>✦</em></span><span>Aviation <em>✦</em></span><span>Blindés <em>✦</em></span><span>Marine <em>✦</em></span><span>Hélicoptères <em>✦</em></span><span>1930 — Aujourd'hui <em>✦</em></span>
+      </div>
+    </div>
+
+    <!-- ============ CHIFFRES ============ -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// 01 — Rapport de situation</div>
+            <h2 class="h2" data-split>Un champ de bataille<br><span class="outline-text">sans équivalent</span></h2>
+          </div>
+          <p class="lead" data-reveal data-delay=".2">Des biplans de l'entre-deux-guerres aux chasseurs de supériorité aérienne modernes, chaque machine est modélisée avec ses forces, ses faiblesses et son histoire.</p>
+        </div>
+        <div class="stats" data-reveal>
+          <div class="stat"><span class="stat-idx">A-01</span><div class="stat-num"><span data-count="2500">2 500</span><sup>+</sup></div><div class="stat-label">Véhicules jouables</div></div>
+          <div class="stat"><span class="stat-idx">A-02</span><div class="stat-num"><span data-count="10">10</span></div><div class="stat-label">Nations</div></div>
+          <div class="stat"><span class="stat-idx">A-03</span><div class="stat-num"><span data-count="8">8</span></div><div class="stat-label">Rangs de progression</div></div>
+          <div class="stat"><span class="stat-idx">A-04</span><div class="stat-num"><span data-count="3">3</span></div><div class="stat-label">Niveaux de réalisme</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THÉÂTRES ============ -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// 02 — Théâtres d'opérations</div>
+            <h2 class="h2" data-split>Air. Terre. Mer.</h2>
+          </div>
+          <p class="lead" data-reveal data-delay=".2">Survolez chaque théâtre pour le déployer.</p>
+        </div>
+        <div class="theatres" data-reveal>
+          <article class="theatre active" data-t="air" tabindex="0">
+            <div class="theatre-bg"></div>
+            <span class="theatre-num">THÉÂTRE 01</span>
+            <div class="theatre-sil" data-sil="jet"></div>
+            <span class="theatre-vert" aria-hidden="true">Aviation</span>
+            <h3>Aviation</h3>
+            <div class="theatre-body">
+              <p>Chasseurs à hélice, bombardiers lourds, jets supersoniques : dominez le ciel, gérez votre énergie et appuyez les troupes au sol.</p>
+              <div class="theatre-tags"><span class="tag hot">Dogfight</span><span class="tag">Bombardement</span><span class="tag">Missiles</span></div>
+              <a class="btn btn-sm btn-ghost" href="hangar.html?type=air">Voir les avions</a>
+            </div>
+          </article>
+          <article class="theatre" data-t="sol" tabindex="0">
+            <div class="theatre-bg"></div>
+            <span class="theatre-num">THÉÂTRE 02</span>
+            <div class="theatre-sil" data-sil="mbt"></div>
+            <span class="theatre-vert" aria-hidden="true">Blindés</span>
+            <h3>Blindés</h3>
+            <div class="theatre-body">
+              <p>Chaque obus est simulé : angle d'impact, épaisseur du blindage, modules internes et membres d'équipage. Un tir bien placé suffit.</p>
+              <div class="theatre-tags"><span class="tag hot">Balistique réaliste</span><span class="tag">Équipage</span><span class="tag">Modules</span></div>
+              <a class="btn btn-sm btn-ghost" href="hangar.html?type=sol">Voir les blindés</a>
+            </div>
+          </article>
+          <article class="theatre" data-t="mer" tabindex="0">
+            <div class="theatre-bg"></div>
+            <span class="theatre-num">THÉÂTRE 03</span>
+            <div class="theatre-sil" data-sil="ship"></div>
+            <span class="theatre-vert" aria-hidden="true">Marine</span>
+            <h3>Marine</h3>
+            <div class="theatre-body">
+              <p>Des vedettes lance-torpilles aux croiseurs, gérez vos compartiments, vos incendies et vos voies d'eau sous le feu ennemi.</p>
+              <div class="theatre-tags"><span class="tag hot">Torpilles</span><span class="tag">Artillerie navale</span><span class="tag">Contrôle des avaries</span></div>
+              <a class="btn btn-sm btn-ghost" href="hangar.html?type=mer">Voir les navires</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VÉHICULE VEDETTE ============ -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// 03 — Fiche vedette</div>
+            <h2 class="h2" data-split>Sous les projecteurs</h2>
+          </div>
+          <a class="btn btn-ghost" href="hangar.html" data-reveal>Tout le hangar</a>
+        </div>
+        <div class="showcase hud" data-reveal="scale">
+          <div class="showcase-stage">
+            <div class="sweep"></div>
+            <div class="showcase-ghost" data-sc-ghost></div>
+            <div class="showcase-sil" data-sc-sil></div>
+          </div>
+          <div class="showcase-info">
+            <div class="showcase-meta" data-sc-meta></div>
+            <h3 data-sc-name></h3>
+            <p data-sc-desc></p>
+            <ul class="spec-list" data-sc-specs></ul>
+            <div class="showcase-nav">
+              <button class="icon-btn" data-sc-prev aria-label="Véhicule précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12H4M10 6l-6 6 6 6"/></svg></button>
+              <button class="icon-btn" data-sc-next aria-label="Véhicule suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+              <span class="showcase-count" data-sc-count></span>
+              <a class="btn btn-sm btn-primary" style="margin-left:auto" data-sc-link href="hangar.html">Fiche complète</a>
+            </div>
+          </div>
+          <div class="showcase-progress" data-sc-progress></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CITATION ============ -->
+    <section class="quote-band" aria-label="Devise">
+      <div class="big" data-parallax="-0.25">Chaque obus compte —</div>
+      <div class="big l2" data-parallax="0.25">Chaque seconde aussi</div>
+      <div class="caption">// DOCTRINE DE L'ACADÉMIE LIGNE DE FRONT</div>
+    </section>
+
+    <!-- ============ EXPLORER ============ -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-reveal>// 04 — Ordre de mission</div>
+            <h2 class="h2" data-split>Explorer le codex</h2>
+          </div>
+          <p class="lead" data-reveal data-delay=".2">Cinq sections, cinq façons d'aborder le front.</p>
+        </div>
+        <div class="explore">
+          <a class="explore-card" href="hangar.html" data-tilt data-reveal data-cursor="OUVRIR">
+            <div class="bg-sil" data-sil="heavy"></div>
+            <span class="num">02 / HANGAR</span>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span>
+            <h3>Le hangar</h3>
+            <p>Filtrez, inspectez et comparez les véhicules emblématiques côte à côte grâce aux fiches radar.</p>
+          </a>
+          <a class="explore-card" href="nations.html" data-tilt data-reveal data-delay=".08" data-cursor="OUVRIR">
+            <div class="bg-sil" data-sil="fighter"></div>
+            <span class="num">03 / NATIONS</span>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span>
+            <h3>Les nations</h3>
+            <p>Dix doctrines militaires, dix façons de jouer. Trouvez celle qui vous correspond.</p>
+          </a>
+          <a class="explore-card" href="modes.html" data-tilt data-reveal data-delay=".12" data-cursor="OUVRIR">
+            <div class="bg-sil" data-sil="heli"></div>
+            <span class="num">04 / MODES</span>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span>
+            <h3>Modes de jeu</h3>
+            <p>Arcade, Réaliste, Simulation — et une carte tactique en direct.</p>
+          </a>
+          <a class="explore-card" href="chronologie.html" data-tilt data-reveal data-delay=".16" data-cursor="OUVRIR">
+            <div class="bg-sil" data-sil="bomber"></div>
+            <span class="num">05 / CHRONOLOGIE</span>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span>
+            <h3>Chronologie</h3>
+            <p>Un siècle d'évolution des blindés et de l'aviation, de 1930 à nos jours.</p>
+          </a>
+          <a class="explore-card" href="academie.html" data-tilt data-reveal data-delay=".2" data-cursor="OUVRIR">
+            <div class="bg-sil" data-sil="td"></div>
+            <span class="num">06 / ACADÉMIE</span>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span>
+            <h3>Académie</h3>
+            <p>Simulateur de blindage incliné, conseils tactiques et quiz de promotion.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/hero.js" defer></script>
+  <script src="assets/js/home.js" defer></script>
+</body>
+</html>
