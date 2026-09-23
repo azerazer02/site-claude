@@ -59,6 +59,36 @@
         <div class="hero-ctas" data-reveal data-delay=".8">
           <a class="btn btn-primary" href="hangar.html" data-cursor="HANGAR">Entrer dans le hangar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a>
           <a class="btn btn-ghost" href="nations.html">Choisir sa nation</a>
+          <button class="btn btn-ghost btn-combat" type="button" data-g-start>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="7"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/></svg>
+            Mode combat · 60 s
+          </button>
+        </div>
+      </div>
+
+      <!-- Mini-jeu : interface -->
+      <div class="g-hint" data-g-hint aria-hidden="true"><i></i>Cliquez sur le ciel ou la crête pour tirer</div>
+      <div class="g-timer" data-g-timer aria-live="off">60 s</div>
+      <button class="btn btn-sm btn-ghost g-quit" type="button" data-g-quit>Quitter · Échap</button>
+      <div class="game-hud" aria-label="Score du mini-jeu">
+        <div class="g-feed" data-g-feed aria-live="polite"></div>
+        <div class="g-panel">
+          <div class="g-main"><small>Score</small><b data-g-score>0</b></div>
+          <div><small>Combo</small><b data-g-combo>×1</b></div>
+          <div><small>Abattus</small><b data-g-kills>0</b></div>
+          <div><small>Précision</small><b data-g-acc>—</b></div>
+          <div><small>Record</small><b data-g-record>0</b></div>
+        </div>
+      </div>
+      <div class="g-end hud" data-g-end hidden role="dialog" aria-label="Fin de mission">
+        <div class="eyebrow">// Fin de mission</div>
+        <div class="g-end-score" data-g-final>0</div>
+        <div class="g-best" data-g-best hidden>Nouveau record !</div>
+        <div class="g-end-rank" data-g-rank>Recrue</div>
+        <div class="g-end-stats"><span><small>Abattus</small><b data-g-final-kills>0</b></span><span><small>Précision</small><b data-g-final-acc>—</b></span></div>
+        <div class="g-end-actions">
+          <button class="btn btn-primary" type="button" data-g-start>Rejouer</button>
+          <button class="btn btn-ghost" type="button" data-g-quit>Quitter</button>
         </div>
       </div>
 

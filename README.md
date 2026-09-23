@@ -6,7 +6,7 @@ Site multi-pages non officiel consacré à War Thunder, écrit en **HTML, CSS et
 
 | Page | Contenu |
 | --- | --- |
-| `index.html` | Accueil : scène de bataille procédurale sur canvas (avions, DCA, traçantes, char dont le canon suit la souris), HUD animé, théâtres Air/Terre/Mer, fiche vedette en rotation |
+| `index.html` | Accueil : scène de bataille sur canvas devenue **mini-jeu de tir** (cliquez pour abattre avions, hélicoptères et chars ; score, combo, précision, mode combat chronométré de 60 s et record enregistré), théâtres Air/Terre/Mer, fiche vedette en rotation |
 | `hangar.html` | 76 véhicules dont 55 blindés, filtrables (type, nation, rang, recherche, tri), fiche détaillée avec BR Arcade/Réaliste/Simulation et diagramme radar, comparateur côte à côte |
 | `nations.html` | Les 10 nations : drapeau flottant animé sur canvas, doctrine, forces par domaine, matrice comparative |
 | `modes.html` | Arcade / Réaliste / Simulation, carte tactique simulée en temps réel (Domination, Conquête, Bataille), progression sur 9 rangs |
@@ -46,7 +46,7 @@ assets/
   js/silhouettes.js  silhouette de profil propre à chaque véhicule (SVG)
   js/data.js         nations, véhicules, BR du jeu, diagramme radar
   js/core.js         en-tête, pied de page, transitions, curseur, révélations
-  js/hero.js         scène canvas de l'accueil
+  js/hero.js         scène canvas et mini-jeu de tir de l'accueil
   js/home.js         accueil (théâtres, vedette, parallaxe)
   js/hangar.js / nations.js / modes.js / chrono.js / academie.js
 ```
