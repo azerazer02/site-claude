@@ -41,7 +41,7 @@
       el.link.href = `hangar.html?v=${v.id}`;
       el.sil.classList.remove('swap');
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        const vals = [...Object.keys(LABELS).map(k => v.stats[k] / 100), v.br / 14];
+        const vals = [...Object.keys(LABELS).map(k => v.stats[k] / 100), v.br / 14.7];
         el.specs.querySelectorAll('.bar i').forEach((b, i) => b.style.setProperty('--v', vals[i]));
       }));
     };

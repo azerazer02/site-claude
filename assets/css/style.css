@@ -1106,18 +1106,18 @@ html.header-hidden .toolbar { top: 8px; }
 @media (max-width: 900px) { .battle-types { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .battle-types { grid-template-columns: 1fr; } }
 
-.ranks { position: relative; display: grid; grid-template-columns: repeat(8, 1fr); gap: 0; margin-top: 20px; }
-.ranks::before { content: ""; position: absolute; left: 6%; right: 6%; top: 34px; height: 2px; background: var(--line-2); }
-.ranks .fill { position: absolute; left: 6%; top: 34px; height: 2px; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 0 12px var(--accent); transition: width 2.4s var(--ease); }
-.ranks.in .fill { width: 88%; }
+.ranks { position: relative; display: grid; grid-template-columns: repeat(9, 1fr); gap: 0; margin-top: 20px; }
+.ranks::before { content: ""; position: absolute; left: 5.5%; right: 5.5%; top: 34px; height: 2px; background: var(--line-2); }
+.ranks .fill { position: absolute; left: 5.5%; top: 34px; height: 2px; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 0 12px var(--accent); transition: width 2.4s var(--ease); }
+.ranks.in .fill { width: 89%; }
 .rank { position: relative; text-align: center; padding: 0 4px; }
-.rank .dot { width: 68px; height: 68px; margin: 0 auto; display: grid; place-items: center; font: 800 1.4rem var(--f-display); border: 1px solid var(--line-2); background: var(--bg); transform: rotate(45deg); transition: border-color .5s, box-shadow .5s, background .5s; transition-delay: calc(var(--i) * .28s); }
+.rank .dot { width: 60px; height: 60px; margin: 0 auto; display: grid; place-items: center; font: 800 1.4rem var(--f-display); border: 1px solid var(--line-2); background: var(--bg); transform: rotate(45deg); transition: border-color .5s, box-shadow .5s, background .5s; transition-delay: calc(var(--i) * .28s); }
 .rank .dot span { transform: rotate(-45deg); }
 .ranks.in .rank .dot { border-color: var(--accent); box-shadow: 0 0 20px -4px var(--accent); background: #1a120a; }
 .rank b { display: block; margin-top: 22px; font: 600 .66rem var(--f-mono); letter-spacing: .12em; color: var(--text); }
 .rank small { display: block; color: var(--muted); font-size: .76rem; margin-top: 4px; line-height: 1.4; }
 @media (max-width: 860px) {
-  .ranks { grid-template-columns: repeat(4, 1fr); row-gap: 30px; }
+  .ranks { grid-template-columns: repeat(3, 1fr); row-gap: 30px; }
   .ranks::before, .ranks .fill { display: none; }
   .rank .dot { width: 54px; height: 54px; font-size: 1.1rem; }
 }
@@ -1333,3 +1333,10 @@ html.boot .loader {
   .toolbar .field { flex: 1 1 100%; }
   .toolbar .field select { width: 100%; }
 }
+
+/* hangar : BR par mode et badge premium */
+.v-prem { position: absolute; top: 78px; right: 16px; font: 600 .55rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: #ffd36b; border: 1px solid rgba(255,211,107,.5); padding: 3px 5px; }
+.specs .br3 { display: flex; gap: 22px; }
+.specs .br3 span { font: 800 1.3rem/1 var(--f-display); }
+.specs .br3 small { display: block; font: 500 .56rem var(--f-mono); letter-spacing: .12em; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
+.br-source { margin-top: 18px; font: 500 .72rem/1.5 var(--f-mono); color: var(--dim); letter-spacing: .04em; }

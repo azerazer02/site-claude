@@ -21,7 +21,7 @@
         <div class="crumbs" data-reveal><a href="index.html">Accueil</a><span>/</span>Hangar</div>
         <div class="eyebrow" data-reveal>// 02 — Inventaire des forces</div>
         <h1 data-split>Le hangar</h1>
-        <p class="lead" data-reveal data-delay=".3">Une sélection de véhicules emblématiques, des chasseurs à hélice aux chars de combat modernes. Cliquez sur une fiche pour l'inspecter, ou sélectionnez-en deux pour les comparer.</p>
+        <p class="lead" data-reveal data-delay=".3">76 véhicules emblématiques, dont 55 blindés, des chars de 1940 aux chars de combat modernes. Cliquez sur une fiche pour l'inspecter, ou sélectionnez-en deux pour les comparer.</p>
       </div>
       <div class="hero-index" aria-hidden="true">02</div>
     </header>
@@ -34,6 +34,11 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
             <span class="sr-only">Nation</span>
             <select data-filter-nation></select>
+          </label>
+          <label class="field">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l3 6 6 .9-4.5 4.3 1 6.3L12 17.8 6.5 20.5l1-6.3L3 9.9 9 9z"/></svg>
+            <span class="sr-only">Rang</span>
+            <select data-filter-rank></select>
           </label>
           <label class="field">
             <span class="sr-only">Trier par</span>
@@ -55,6 +60,7 @@
         </div>
 
         <div class="v-grid" data-grid></div>
+        <p class="br-source" data-br-source></p>
       </div>
     </section>
   </main>
@@ -76,6 +82,7 @@
     </div>
   </div>
 
+  <script src="assets/js/silhouettes.js" defer></script>
   <script src="assets/js/data.js" defer></script>
   <script src="assets/js/core.js" defer></script>
   <script src="assets/js/hangar.js" defer></script>

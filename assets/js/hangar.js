@@ -8,6 +8,7 @@
   const typeSeg = $('[data-filter-type]');
   const nationSel = $('[data-filter-nation]');
   const sortSel = $('[data-sort]');
+  const rankSel = $('[data-filter-rank]');
   const search = $('[data-search]');
   const countOut = $('[data-count-out]');
   const tray = $('[data-tray]');
@@ -21,6 +22,7 @@
   const state = {
     type: types[params.get('type')] ? params.get('type') : 'all',
     nation: WT.nationById[params.get('nation')] ? params.get('nation') : 'all',
+    rank: 0,
     sort: 'br-desc',
     q: '',
     compare: [],
@@ -33,7 +35,7 @@
   const TYPES = [['all', 'Tous'], ...Object.entries(types)];
   const renderTypeSeg = () => {
     typeSeg.innerHTML = TYPES.map(([k, l]) => {
-      const n = vehicles.filter(v => (k === 'all' || v.type === k) && (state.nation === 'all' || v.nation === state.nation)).length;
+      const n = vehicles.filter(v => (k === 'all' || v.type === k) && (state.nation === 'all' || v.nation === state.nation) && (!state.rank || v.rankNum === state.rank)).length;
       return `<button type="button" data-type="${k}" aria-pressed="${state.type === k}">${l} <small>${n}</small></button>`;
     }).join('');
   };
@@ -47,6 +49,9 @@
     nations.map(n => `<option value="${n.id}">${n.name}</option>`).join('');
   nationSel.value = state.nation;
   nationSel.addEventListener('change', () => { state.nation = nationSel.value; renderTypeSeg(); render(); syncURL(); });
+  const ranks = [...new Set(vehicles.map(v => v.rankNum))].sort((a, b) => a - b);
+  rankSel.innerHTML = `<option value="0">Tous les rangs</option>` + ranks.map(n => `<option value="${n}">Rang ${WT.ROMAN[n]}</option>`).join('');
+  rankSel.addEventListener('change', () => { state.rank = +rankSel.value; renderTypeSeg(); render(); });
   sortSel.addEventListener('change', () => { state.sort = sortSel.value; render(); });
   let qT;
   search.addEventListener('input', () => { clearTimeout(qT); qT = setTimeout(() => { state.q = search.value.trim().toLowerCase(); render(); }, 120); });
@@ -65,6 +70,7 @@
     const out = vehicles.filter(v =>
       (state.type === 'all' || v.type === state.type) &&
       (state.nation === 'all' || v.nation === state.nation) &&
+      (!state.rank || v.rankNum === state.rank) &&
       (!q || norm(`${v.name} ${v.role} ${v.nationData.name} ${v.typeLabel}`).includes(q)));
     const s = state.sort;
     out.sort((a, b) =>
@@ -72,14 +78,14 @@
       s === 'year-asc' ? a.year - b.year :
       s === 'year-desc' ? b.year - a.year :
       s === 'name' ? a.name.localeCompare(b.name, 'fr') :
-      b.br - a.br);
+      b.br - a.br || a.name.localeCompare(b.name, 'fr'));
     return out;
   };
 
   const card = (v, i) => `
     <article class="v-card${state.compare.includes(v.id) ? ' selected' : ''}" data-id="${v.id}" style="--i:${Math.min(i, 16)}" tabindex="0" aria-label="${esc(v.name)}" data-cursor="INSPECTER">
       <div class="v-top">${flag(v.nation)}<span>${v.nationData.short} · ${v.typeLabel}</span><span class="rank">${v.rank}</span></div>
-      <div class="v-br">${v.br.toFixed(1)}<small>BR</small></div>
+      <div class="v-br">${v.br.toFixed(1)}<small>BR RB</small></div>${v.premium ? '<span class="v-prem">Premium</span>' : ''}
       <div class="v-sil-wrap">${silhouette(v.sil, 'v-sil')}</div>
       <div class="v-name">${esc(v.name)}</div>
       <div class="v-role">${esc(v.role)} · ${v.year}</div>
@@ -103,7 +109,7 @@
     grid.querySelectorAll('.v-card').forEach(LDF.tilt);
     const r = grid.querySelector('[data-reset]');
     if (r) r.addEventListener('click', () => {
-      state.type = 'all'; state.nation = 'all'; state.q = ''; search.value = ''; nationSel.value = 'all';
+      state.type = 'all'; state.nation = 'all'; state.rank = 0; state.q = ''; search.value = ''; nationSel.value = 'all'; rankSel.value = '0';
       renderTypeSeg(); render(); syncURL();
     });
   }
@@ -189,7 +195,7 @@
     openModal(`
       <div class="detail">
         <div class="detail-stage">
-          <div class="tl">ID&nbsp;<b>${v.id.toUpperCase()}</b><br>RANG&nbsp;<b>${v.rank}</b> · BR&nbsp;<b>${v.br.toFixed(1)}</b><br>SERVICE&nbsp;<b>${v.year}</b></div>
+          <div class="tl">ID&nbsp;<b>${v.id.toUpperCase()}</b><br>RANG&nbsp;<b>${v.rank}</b> · BR RB&nbsp;<b>${v.br.toFixed(1)}</b><br>SERVICE&nbsp;<b>${v.year}</b></div>
           <div class="scan"></div>
           ${silhouette(v.sil, 'detail-sil')}
           <div class="bign" aria-hidden="true">${esc(v.name)}</div>
@@ -202,6 +208,7 @@
           <dl class="specs">
             <div><dt>Vitesse max.</dt><dd>${esc(v.speed)}</dd></div>
             <div><dt>Mise en service</dt><dd>${v.year}</dd></div>
+            <div class="wide"><dt>Cote de bataille · rang ${v.rank}${v.premium ? ' · premium' : ''}</dt><dd class="br3"><span><small>Arcade</small>${v.brs.ab.toFixed(1)}</span><span><small>Réaliste</small>${v.brs.rb.toFixed(1)}</span><span><small>Simulation</small>${v.brs.sb.toFixed(1)}</span></dd></div>
             <div class="wide"><dt>Armement</dt><dd>${esc(v.arm)}</dd></div>
             <div class="wide"><dt>Protection</dt><dd>${esc(v.prot)}</dd></div>
           </dl>
@@ -240,7 +247,10 @@
             <thead><tr><th>${esc(a.name)}</th><th></th><th>${esc(b.name)}</th></tr></thead>
             <tbody>
               ${WT.AXES.map(([k, l]) => row(l, a.stats[k], b.stats[k])).join('')}
-              <tr><td>${a.br.toFixed(1)}</td><th>Cote (BR)</th><td>${b.br.toFixed(1)}</td></tr>
+              <tr><td>${a.brs.ab.toFixed(1)}</td><th>BR Arcade</th><td>${b.brs.ab.toFixed(1)}</td></tr>
+              <tr><td>${a.br.toFixed(1)}</td><th>BR Réaliste</th><td>${b.br.toFixed(1)}</td></tr>
+              <tr><td>${a.brs.sb.toFixed(1)}</td><th>BR Simulation</th><td>${b.brs.sb.toFixed(1)}</td></tr>
+              <tr><td>${a.rank}</td><th>Rang</th><td>${b.rank}</td></tr>
               <tr><td>${a.year}</td><th>Service</th><td>${b.year}</td></tr>
               <tr><td>${esc(a.speed)}</td><th>Vitesse</th><td>${esc(b.speed)}</td></tr>
             </tbody>
@@ -248,6 +258,9 @@
         </div>
       </div>`);
   }
+
+  const src = document.querySelector('[data-br-source]');
+  if (src) src.textContent = `BR en mode Réaliste (RB), issus des fichiers du jeu, version ${WT.GAME_VERSION}. Les BR Arcade et Simulation figurent dans chaque fiche.`;
 
   /* ---------- Démarrage ---------- */
   renderTypeSeg();

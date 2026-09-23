@@ -98,7 +98,8 @@
     });
     panel.style.setProperty('--nc', n.color);
     code.textContent = n.short;
-    const vs = vehicles.filter(v => v.nation === id);
+    const all = vehicles.filter(v => v.nation === id);
+    const vs = all.slice().sort((a, b) => b.br - a.br).slice(0, 9);
     info.innerHTML = `
       <div class="anim-in">
         <div class="eyebrow" style="color:${n.color}">// Nation ${String(nations.indexOf(n) + 1).padStart(2, '0')} / ${nations.length}</div>
@@ -110,7 +111,8 @@
           ${DOMAINS.map(([k, l]) => `<div><span>${l}</span><span class="bar"><i style="--v:0" data-v="${n.power[k] / 100}"></i></span><b>${n.power[k]}</b></div>`).join('')}
         </div>
         ${vs.length ? `<div class="eyebrow" style="margin:6px 0 0">// Véhicules emblématiques</div>
-        <div class="icon-vehicles">${vs.map(v => `<a href="hangar.html?v=${v.id}">${silhouette(v.sil)}<b>${esc(v.name)}</b><small>${v.typeLabel} · BR ${v.br.toFixed(1)}</small></a>`).join('')}</div>` : ''}
+        <div class="icon-vehicles">${vs.map(v => `<a href="hangar.html?v=${v.id}">${silhouette(v.sil)}<b>${esc(v.name)}</b><small>${v.typeLabel} · BR ${v.br.toFixed(1)}</small></a>`).join('')}</div>
+        <a class="btn btn-sm btn-ghost" style="margin-top:14px" href="hangar.html?nation=${id}">Voir les ${all.length} véhicules dans le hangar</a>` : ''}
       </div>`;
     requestAnimationFrame(() => requestAnimationFrame(() =>
       info.querySelectorAll('[data-v]').forEach(b => b.style.setProperty('--v', b.dataset.v))));

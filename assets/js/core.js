@@ -72,7 +72,7 @@
         <div>
           <a class="brand" href="index.html" style="margin-bottom:18px">${LOGO}<span class="brand-text"><b>LIGNE DE FRONT</b><small>WAR THUNDER · FAN CODEX</small></span></a>
           <p>Un codex non officiel consacré à War Thunder : véhicules, nations, modes de jeu et conseils tactiques. Conçu avec passion, entièrement en HTML, CSS et JavaScript, sans aucune bibliothèque.</p>
-          <p style="font-size:.8rem;color:var(--dim)">Site de fan sans affiliation. War Thunder est une marque de Gaijin Entertainment. Les cotes de bataille (BR) sont indicatives et évoluent au fil des mises à jour.</p>
+          <p style="font-size:.8rem;color:var(--dim)">Site de fan sans affiliation. War Thunder est une marque de Gaijin Entertainment. Rangs et cotes de bataille (BR) issus des fichiers du jeu${window.WT && WT.GAME_VERSION ? ` (version ${WT.GAME_VERSION})` : ''} ; ils évoluent au fil des mises à jour.</p>
         </div>
         <div>
           <h4>// NAVIGATION</h4>

@@ -31,7 +31,7 @@
 
   const erasEl = document.querySelector('[data-eras]');
   erasEl.innerHTML = ERAS.map((e, i) => {
-    const vs = vehicles.filter(v => v.year >= e.from && v.year <= e.to).sort((a, b) => a.year - b.year);
+    const vs = vehicles.filter(v => v.year >= e.from && v.year <= e.to).sort((a, b) => a.year - b.year).slice(0, 14);
     return `
       <article class="era" data-from="${e.from}">
         <span class="era-dot" aria-hidden="true"></span>
