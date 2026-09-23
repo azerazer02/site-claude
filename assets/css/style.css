@@ -1193,7 +1193,7 @@ html.header-hidden .toolbar { top: 8px; }
   border: 1px solid var(--line);
   background: #0b0e0c;
 }
-.sim-stage { position: relative; border-right: 1px solid var(--line); min-width: 0; }
+.sim-stage { position: relative; border-right: 1px solid var(--line); min-width: 0; display: grid; align-items: center; background: #0b0e0c; }
 .sim-stage canvas { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; touch-action: none; }
 .sim-stage .hint { position: absolute; left: 16px; bottom: 12px; font: 500 .64rem var(--f-mono); letter-spacing: .14em; color: var(--dim); pointer-events: none; }
 .sim-panel { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
